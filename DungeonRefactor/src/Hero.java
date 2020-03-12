@@ -31,7 +31,7 @@
 public class Hero extends DungeonCharacter
 {
 	private double chanceToBlock;
-	private SpecialAttack specialAttack;
+	private Attack specialAttack;
 	private String specialName;
 	private int numTurns;
 
@@ -39,7 +39,7 @@ public class Hero extends DungeonCharacter
 //calls base constructor and gets name of hero from user
   public Hero(String name, int hitPoints, int attackSpeed,
 				     double chanceToHit, int damageMin, int damageMax,
-					 double chanceToBlock, String attackRattle, String specialName, SpecialAttack specialAttack)
+					 double chanceToBlock, String attackRattle, String specialName, Attack specialAttack)
   {
 	super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax, attackRattle);
 	this.chanceToBlock = chanceToBlock;
@@ -137,7 +137,7 @@ This method is called by: external sources
 			    attack(opponent);
 		    }
 			if(choice == 2) {
-				this.specialAttack.SpecialAttack(this, opponent);
+				this.specialAttack.attack(this, opponent);
 				
 			} else if(choice < 1 || choice > 2){
 				System.out.println("invalid choice!");

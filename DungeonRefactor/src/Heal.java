@@ -1,10 +1,10 @@
 
-public class Heal implements SpecialAttack{
+public class Heal implements Attack{
 	public final int MIN_ADD = 25;
 	public final int MAX_ADD = 50;
 	
 	@Override
-	public void SpecialAttack(DungeonCharacter hero, DungeonCharacter opponent) {
+	public void attack(DungeonCharacter hero, DungeonCharacter opponent) {
 		int hPoints;
 
 		hPoints = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;

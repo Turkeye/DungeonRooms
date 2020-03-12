@@ -41,7 +41,7 @@ public abstract class DungeonCharacter implements Comparable
 	private int attackSpeed;
 	private double chanceToHit;
 	private int damageMin, damageMax;
-	private String attackRattle;
+	private AttackType attack;
 
 	public int compareTo(Object o)
 	{
@@ -52,7 +52,7 @@ public abstract class DungeonCharacter implements Comparable
 //explicit constructor to initialize instance variables -- it is called
 // by derived classes
 	public DungeonCharacter(String name, int hitPoints, int attackSpeed,
-				     double chanceToHit, int damageMin, int damageMax, String attackRattle)
+				     double chanceToHit, int damageMin, int damageMax, String attackType)
 	{
 
 		this.name = name;
@@ -61,7 +61,8 @@ public abstract class DungeonCharacter implements Comparable
 		this.chanceToHit = chanceToHit;
 		this.damageMin = damageMin;
 		this.damageMax = damageMax;
-		this.attackRattle = attackRattle;
+		AttackFactory attackGen = new AttackFactory();
+		this.attack = attackGen.getAttack(attackType);
 
 	}//end constructor
 
@@ -169,32 +170,49 @@ hero classes and externally
 ---------------------------------------------------------*/
 	public void attack(DungeonCharacter opponent)
 	{
-		System.out.println(name + attackRattle + opponent.getName() + ":");
-		
-		boolean canAttack;
-		int damage;
-
-		canAttack = Math.random() <= chanceToHit;
-
-		if (canAttack)
-		{
-			damage = (int)(Math.random() * (damageMax - damageMin + 1))
-						+ damageMin ;
-			opponent.subtractHitPoints(damage);
-
-
-
-			System.out.println();
-		}//end if can attack
-		else
-		{
-
-			System.out.println(getName() + "'s attack on " + opponent.getName() +
-								" failed!");
-			System.out.println();
-		}//end else
+		this.attack.attack(this, opponent);
 
 	}//end attack method
+
+	public double getChanceToHit() {
+		return chanceToHit;
+	}
+
+	public void setChanceToHit(double chanceToHit) {
+		this.chanceToHit = chanceToHit;
+	}
+
+	public int getDamageMin() {
+		return damageMin;
+	}
+
+	public void setDamageMin(int damageMin) {
+		this.damageMin = damageMin;
+	}
+
+	public int getDamageMax() {
+		return damageMax;
+	}
+
+	public void setDamageMax(int damageMax) {
+		this.damageMax = damageMax;
+	}
+
+	public AttackType getAttack() {
+		return attack;
+	}
+
+	public void setAttack(String attackRattle) {
+		this.attack = attack;
+	}
+
+	public void setHitPoints(int hitPoints) {
+		this.hitPoints = hitPoints;
+	}
+
+	public void setAttackSpeed(int attackSpeed) {
+		this.attackSpeed = attackSpeed;
+	}
 
 //-----------------------------------------------------------------
 

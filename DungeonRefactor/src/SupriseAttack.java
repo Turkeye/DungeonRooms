@@ -1,8 +1,8 @@
 
-public class SupriseAttack implements SpecialAttack {
+public class SupriseAttack implements Attack {
 
 	@Override
-	public void SpecialAttack(DungeonCharacter hero, DungeonCharacter opponent) {
+	public void attack(DungeonCharacter hero, DungeonCharacter opponent) {
 		double surprise = Math.random();
 		if (surprise <= .4)
 		{

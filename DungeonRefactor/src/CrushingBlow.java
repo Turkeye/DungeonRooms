@@ -1,8 +1,8 @@
 
-public class CrushingBlow implements SpecialAttack {
+public class CrushingBlow implements Attack {
 
 	@Override
-	public void SpecialAttack(DungeonCharacter hero, DungeonCharacter opponent) {
+	public void attack(DungeonCharacter hero, DungeonCharacter opponent) {
 		
 		if (Math.random() <= .4)
 		{
