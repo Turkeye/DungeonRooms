@@ -34,19 +34,79 @@ public class Hero extends DungeonCharacter
 	private Attack specialAttack;
 	private String specialName;
 	private int numTurns;
+	private int numHealingPotions;
+	private int numVisionPotions;
+	private String[] pillars  = {null, null, null, null};
+	private Room position;
 
 //-----------------------------------------------------------------
 //calls base constructor and gets name of hero from user
   public Hero(String name, int hitPoints, int attackSpeed,
 				     double chanceToHit, int damageMin, int damageMax,
-					 double chanceToBlock, String attackRattle, String specialName, Attack specialAttack)
+					 double chanceToBlock, String attackRattle, String specialName, 
+					 Attack specialAttack)
   {
 	super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax, attackRattle);
 	this.chanceToBlock = chanceToBlock;
 	this.specialAttack = specialAttack;
 	this.specialName = specialName;
+	this.numHealingPotions = 0;
+	this.numVisionPotions = 0;
 	readName();
   }
+
+public double getChanceToBlock() {
+	return chanceToBlock;
+}
+
+public Attack getSpecialAttack() {
+	return specialAttack;
+}
+
+public String getSpecialName() {
+	return specialName;
+}
+
+public int getNumTurns() {
+	return numTurns;
+}
+
+public int getNumHealingPotions() {
+	return numHealingPotions;
+}
+
+public void setNumHealingPotions(int numHealingPotions) {
+	this.numHealingPotions = numHealingPotions;
+}
+
+public int getNumVisionPotions() {
+	return numVisionPotions;
+}
+
+public void setNumVisionPotions(int numVisionPotions) {
+	this.numVisionPotions = numVisionPotions;
+}
+
+public String[] getPillars() {
+	return pillars;
+}
+
+public void setPillars(String pillar) {
+	for(int i = 0; i < pillars.length-1; i++){ 
+		if(pillars[i] == null) {
+			pillars[i] = pillar;
+			break;
+		}
+	}
+}
+
+public Room getPosition() {
+	return position;
+}
+
+public void setPosition(Room position) {
+	this.position = position;
+}
 
 /*-------------------------------------------------------
 readName obtains a name for the hero from the user
