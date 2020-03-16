@@ -210,5 +210,17 @@ This method is called by: external sources
 		} while(numTurns > 0);
 
 	}//end battleChoices
+	
+	public String toString() {
+		String res = this.getName() + " has " + this.getHitPoints() + " hp, " + this.getNumHealingPotions() + " healing potions, " + this.getNumVisionPotions() + " vision potions, and ";
+		String[] array = this.getPillars();
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] != null) 
+				res += array[i] + " ";
+			if(array == null)
+				res += "no pillars of OO have been found";
+		}
+		return res;
+	}
 
 }//end Hero class

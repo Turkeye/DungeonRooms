@@ -1,3 +1,8 @@
+/Attack.class
+/AttackFactory.class
+/AttackType.class
+/Battle.class
+/CrushingBlow.class
 /Dungeon.class
 /DungeonCharacter.class
 /DungeonRefactorReportZach_Turk_Caleb_Stanley.docx
@@ -8,12 +13,5 @@
 /Keyboard.class
 /Monster.class
 /MonsterFactory.class
-/SpecialAttack.class
-/SupriseAttack.class
-/CrushingBlow.class
 /Room.class
-/Attack.class
-/BattleContext.class
-/Battle.class
-/AttackType.class
-/AttackFactory.class
+/SupriseAttack.class
