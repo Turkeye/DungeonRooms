@@ -61,6 +61,13 @@ public class Dungeon
 
     }//end main method
 
+    public Dungeon() {
+    	Room[][] dungeon = new Room[5][5];
+    	int rand = (int)(Math.random()*(6));
+    	int rand2 = (int)(Math.random()*(6));
+    	
+    	
+    }
 /*-------------------------------------------------------------------
 chooseHero allows the user to select a hero, creates that hero, and
 returns it.  It utilizes a polymorphic reference (Hero) to accomplish
