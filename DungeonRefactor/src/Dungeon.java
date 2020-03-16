@@ -45,6 +45,8 @@
 */
 public class Dungeon
 {
+	
+	private Room[][] dungeon;
     public static void main(String[] args)
 	{
 
@@ -61,11 +63,20 @@ public class Dungeon
 
     }//end main method
 
-    public Dungeon() {
+    public Dungeon(Hero hero) {
     	Room[][] dungeon = new Room[5][5];
-    	int rand = (int)(Math.random()*(6));
-    	int rand2 = (int)(Math.random()*(6));
-    	
+    	dungeon[0][0].setEntrance();
+    	dungeon[4][4].setExit();
+    	String[] pillars = {"Abstraction", "Encapsulation", "Inheritance", "Polymorphism"};
+    	dungeon[1][0].setPillar();
+    	dungeon[2][1].setPillar();
+    	dungeon[3][3].setPillar();
+    	dungeon[4][2].setPillar();
+    	this.dungeon = dungeon;
+    }
+    
+    public Room[][] getDungeon() {
+    	return this.dungeon;
     }
 /*-------------------------------------------------------------------
 chooseHero allows the user to select a hero, creates that hero, and

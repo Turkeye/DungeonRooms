@@ -4,8 +4,8 @@ public class Room {
 	private int visionpot;
 	private int pit;
 	private int[] Doors;
-	private int entrance, exit, monster;
-	
+	private int monster;
+	private boolean entrance, exit, hasPillar;
 	public Room(Room entrance, Room exit) {
 		
 		int check = 0;
@@ -15,28 +15,33 @@ public class Room {
 				check++;
 			}
 		}
-		if(check == 0)
+		if(check == 0) {
 			Doors[0] = 1;
-		
+			Doors[1] = 1;
+		}
 		if(this != entrance && this != exit) {
 			int rand1 = (int)Math.random() * 100;
 			int rand2 = (int)Math.random() * 100;
 			int rand3 = (int)Math.random() * 100;
 			if(rand1 <= 10)
-				this.healthpot = 1;
-			else if(rand2 <= 10)
 				this.pit = 1;
+			else if(rand2 <= 10)
+				this.healthpot = 1;
 			else if(rand3 <= 10)
 				this.visionpot = 1;
 			else if(rand3 >= 90)
 				this.monster = 1;
 		}
 	}
-	
-	public void setExit() {
-		this.exit = 1;
+	public void setEntrance() {
+		this.entrance = true;
 	}
-	
+	public void setExit() {
+		this.exit = true;
+	}
+	public void setPillar() {
+		this.hasPillar = true;
+	}
 	public String toString() {
 		String res = "";
 		if(this.Doors[0] == 1)
@@ -56,9 +61,9 @@ public class Room {
 			res += "V ";
 		else if(this.pit == 1)
 			res += "P "; 
-		else if(this.exit == 1)
+		else if(this.exit == true)
 			res += "O ";
-		else if(this.entrance == 1)
+		else if(this.entrance == true)
 			res += "I ";
 		else if(this.monster == 1)
 			res += "X ";
