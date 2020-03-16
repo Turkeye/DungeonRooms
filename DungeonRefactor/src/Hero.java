@@ -214,13 +214,19 @@ This method is called by: external sources
 	public String toString() {
 		String res = this.getName() + " has " + this.getHitPoints() + " hp, " + this.getNumHealingPotions() + " healing potions, " + this.getNumVisionPotions() + " vision potions, and ";
 		String[] array = this.getPillars();
+		int count = 0;
 		for(int i = 0; i < array.length; i++) {
 			if(array[i] != null) 
-				res += array[i] + " ";
-			if(array == null)
-				res += "no pillars of OO have been found";
+				count++;
 		}
-		return res;
+		if(count == 0) {
+			res += " no Pillars of OO have been found.";
+			return res;
+		}
+		else {
+			res += count + " Pillars of OO have been found.";
+			return res;
+		}
 	}
 
 }//end Hero class
