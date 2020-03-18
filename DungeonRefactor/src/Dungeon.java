@@ -55,13 +55,16 @@ public class Dungeon
 
     public Dungeon(Hero hero) {
     	Room[][] dungeon = new Room[5][5];
+        dungeon[0][0] = new Room(0, 0);
     	dungeon[0][0].setEntrance();
+        dungeon[4][4] = new Room(4, 4);
     	dungeon[4][4].setExit();
     	for(int i = 0; i < dungeon.length; i++) {
     		for(int j = 0; j < dungeon[i].length; j++) {
     			dungeon[i][j] = new Room(j, i);
     		}
     	}
+        this.pillars = new ArrayList<String>(4);
     	pillars.add("Abstraction");
     	pillars.add("Encapsulation");
     	pillars.add("Inheritance");

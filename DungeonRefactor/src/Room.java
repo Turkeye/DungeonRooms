@@ -6,7 +6,6 @@ public class Room {
 	private int healthpot;
 	private int visionpot;
 	private int pit;
-	private int[] Doors;
 	private int monster;
 	private boolean entrance, exit, hasPillar;
 	private int ypos;
@@ -36,24 +35,6 @@ public class Room {
 	}
 	public int getXpos() {
 		return xpos;
-	}
-	public Room(Room entrance, Room exit, int xpos, int ypos) {
-		this.xpos = xpos;
-		this.ypos = ypos;
-		
-		if(this.entrance == false && this.exit == false) {
-			int rand1 = (int)Math.random() * 100;
-			int rand2 = (int)Math.random() * 100;
-			int rand3 = (int)Math.random() * 100;
-			if(rand1 <= 10)
-				this.pit = 1;
-			else if(rand2 <= 10)
-				this.healthpot = 1;
-			else if(rand3 <= 10)
-				this.visionpot = 1;
-			else if(rand3 >= 90)
-				this.monster = 1;
-		}
 	}
 	public void setEntrance() {
 		this.entrance = true;
@@ -127,12 +108,6 @@ public class Room {
 	}
 	public void setPit(int pit) {
 		this.pit = pit;
-	}
-	public int[] getDoors() {
-		return Doors;
-	}
-	public void setDoors(int[] doors) {
-		Doors = doors;
 	}
 	public int getMonster() {
 		return monster;
