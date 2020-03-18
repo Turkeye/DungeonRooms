@@ -163,8 +163,8 @@ public class DungeonAdventure {
 				if(position.getXpos() > 0) {
 					System.out.println("Type \"left\" or \"west\" to move 1 room left");
 				}
-				System.out.println("Type \"health potion\" to use health potion. Current Potion amount: " + hero.getNumHealingPotions());
-				System.out.println("Type \"vision potion\" to use vision potion. Current Potion amount: " + hero.getNumVisionPotions());
+				System.out.println("Type \"hp\" to use health potion. Current Potion amount: " + hero.getNumHealingPotions());
+				System.out.println("Type \"vp\" to use vision potion. Current Potion amount: " + hero.getNumVisionPotions());
 				System.out.println("Hero Status: " + hero.toString());
 				String option = scanner.next();
 				if(option.equals("up") || option.equals("north")) {
@@ -179,13 +179,15 @@ public class DungeonAdventure {
 				else if(option.equals("left") || option.equals("west")) {
 					optionReturn = 4;
 				}
-				else if(option.equals("health potion") && hero.getNumHealingPotions() > 0) {
+				else if(option.equals("hp") && hero.getNumHealingPotions() > 0) {
 					int addPoints = (int)((Math.random() * (15-5)) + 5);
 					hero.addHitPoints(addPoints);
 					System.out.println("You drank a health potion! Gained " + addPoints + " hit points!");
 				}
-				else if(option.equals("vision potion") && hero.getNumVisionPotions() > 0) {
-					System.out.println("You drank a vision potion!");
+				else if(option.equals("vp") && hero.getNumVisionPotions() > 0) {
+					System.out.println("You drank a vision potion!"); 
+					useVisionPotion(dungeonArray, position);
+					/*
 					if(position.getYpos() > 0 && position.getXpos() > 0) {
 						System.out.println(dungeonArray[position.getYpos()-1][position.getXpos()-1].toString());
 					}
@@ -210,14 +212,76 @@ public class DungeonAdventure {
 					}
 					if(position.getYpos() < 5 && position.getXpos() < 5) {
 						System.out.print(dungeonArray[position.getYpos()+1][position.getXpos()+1].toString());
-					}
+					} */
 				}
 				else {
 					System.out.println("invalid option.");
 				}
 			}
-			scanner.close();
+			//scanner.close();
 			return optionReturn;
 		}
+		 public static void useVisionPotion(Room[][] dung, Room room) {
+		    	int xpos = room.getXpos();
+		    	int ypos = room.getYpos();
+		    	if(xpos == 0 && ypos > 0 && ypos < 4) {
+		    		System.out.println(dung[xpos][ypos-1].getTopRow() + " " + room.getTopRow() + " " + dung[xpos][ypos+1].getTopRow());
+		    		System.out.println(dung[xpos][ypos-1].getMiddleRow() + " " + room.getMiddleRow() + " " + dung[xpos][ypos+1].getMiddleRow());
+		    		System.out.println(dung[xpos][ypos-1].getBottomRow() + " " + room.getBottomRow() + " " + dung[xpos][ypos+1].getBottomRow());
+		    		System.out.println(dung[xpos+1][ypos-1].getTopRow() + " " + dung[xpos+1][ypos].getTopRow() + " " + dung[xpos+1][ypos+1].getTopRow());
+		    		System.out.println(dung[xpos+1][ypos-1].getMiddleRow() + " " + dung[xpos+1][ypos].getMiddleRow() + " " + dung[xpos+1][ypos+1].getMiddleRow());
+		    		System.out.println(dung[xpos+1][ypos-1].getBottomRow() + " " + dung[xpos+1][ypos].getBottomRow() + " " + dung[xpos+1][ypos+1].getBottomRow());
+		    	}
+		    	else if(xpos == 0 && ypos == 4) {
+		    		System.out.println(dung[xpos][ypos-1].getTopRow() + " " + room.getTopRow());
+		    		System.out.println(dung[xpos][ypos-1].getMiddleRow() + " " + room.getMiddleRow());
+		    		System.out.println(dung[xpos][ypos-1].getBottomRow() + " " + room.getBottomRow());
+		    		System.out.println(dung[xpos+1][ypos-1].getTopRow() + " " + dung[xpos+1][ypos].getTopRow());
+		    		System.out.println(dung[xpos+1][ypos-1].getMiddleRow() + " " + dung[xpos+1][ypos].getMiddleRow());
+		    		System.out.println(dung[xpos+1][ypos-1].getBottomRow() + " " + dung[xpos+1][ypos].getBottomRow());
+		    	}
+		    	else if(xpos > 0 && ypos == 0 && xpos < 4) {
+		    		System.out.println(dung[xpos-1][ypos].getTopRow() + " " + dung[xpos-1][ypos+1].getTopRow());
+		    		System.out.println(dung[xpos-1][ypos].getMiddleRow() + " " + dung[xpos-1][ypos+1].getMiddleRow());
+		    		System.out.println(dung[xpos-1][ypos].getBottomRow() + " " + dung[xpos-1][ypos+1].getBottomRow());
+		    		System.out.println(room.getTopRow() + " " + dung[xpos][ypos+1].getTopRow());
+		    		System.out.println(room.getMiddleRow() + " " + dung[xpos][ypos+1].getMiddleRow());
+		    		System.out.println(room.getBottomRow() + " " + dung[xpos][ypos+1].getBottomRow());
+		    		System.out.println(dung[xpos+1][ypos].getTopRow() + " " + dung[xpos+1][ypos+1].getTopRow());
+		    		System.out.println(dung[xpos+1][ypos].getMiddleRow() + " " + dung[xpos+1][ypos+1].getMiddleRow());
+		    		System.out.println(dung[xpos+1][ypos].getBottomRow() + " " + dung[xpos+1][ypos+1].getBottomRow());
+		    	}
+		    	else if(xpos > 0 && ypos > 0 && ypos < 4) {
+		    		System.out.println(dung[xpos-1][ypos-1].getTopRow() + " " +dung[xpos-1][ypos].getTopRow() + " " + dung[xpos-1][ypos+1].getTopRow());
+		    		System.out.println(dung[xpos-1][ypos-1].getMiddleRow() + " " +dung[xpos-1][ypos].getMiddleRow() + " " + dung[xpos-1][ypos+1].getMiddleRow());
+		    		System.out.println(dung[xpos-1][ypos-1].getBottomRow() + " " +dung[xpos-1][ypos].getBottomRow() + " " + dung[xpos-1][ypos+1].getBottomRow());
+		    		System.out.println(dung[xpos][ypos-1].getTopRow() + " " + room.getTopRow() + " " + dung[xpos][ypos+1].getTopRow());
+		    		System.out.println(dung[xpos][ypos-1].getMiddleRow() + " " + room.getMiddleRow() + " " + dung[xpos][ypos+1].getMiddleRow());
+		    		System.out.println(dung[xpos][ypos-1].getBottomRow() + " " + room.getBottomRow() + " " + dung[xpos][ypos+1].getBottomRow());
+		    		System.out.println(dung[xpos+1][ypos-1].getTopRow() + " " + dung[xpos+1][ypos].getTopRow() + " " + dung[xpos+1][ypos+1].getTopRow());
+		    		System.out.println(dung[xpos+1][ypos-1].getMiddleRow() + " " + dung[xpos+1][ypos].getMiddleRow() + " " + dung[xpos+1][ypos+1].getMiddleRow());
+		    		System.out.println(dung[xpos+1][ypos-1].getBottomRow() + " " + dung[xpos+1][ypos].getBottomRow() + " " + dung[xpos+1][ypos+1].getBottomRow());
+		    	}
+		    	else if(xpos > 0 && ypos == 4) {
+		    		System.out.println(dung[xpos-1][ypos-1].getTopRow() + " " + dung[xpos-1][ypos].getTopRow());
+		    		System.out.println(dung[xpos-1][ypos-1].getMiddleRow() + " " + dung[xpos-1][ypos].getMiddleRow());
+		    		System.out.println(dung[xpos-1][ypos-1].getBottomRow() + " " + dung[xpos-1][ypos].getBottomRow());
+		    		System.out.println(dung[xpos][ypos-1].getTopRow() + " " + room.getTopRow());
+		    		System.out.println(dung[xpos][ypos-1].getMiddleRow() + " " + room.getMiddleRow());
+		    		System.out.println(dung[xpos][ypos-1].getBottomRow() + " " + room.getBottomRow());
+		    		System.out.println(dung[xpos+1][ypos-1].getTopRow() + " " + dung[xpos+1][ypos].getTopRow());
+		    		System.out.println(dung[xpos+1][ypos-1].getMiddleRow() + " " + dung[xpos+1][ypos].getMiddleRow());
+		    		System.out.println(dung[xpos+1][ypos-1].getBottomRow() + " " + dung[xpos+1][ypos].getBottomRow());
+		    	}
+		    	else if(xpos == 4 && ypos == 4) {
+		    		System.out.println(dung[xpos-1][ypos-1].getTopRow() + " " + dung[xpos-1][ypos].getTopRow());
+		    		System.out.println(dung[xpos-1][ypos-1].getMiddleRow() + " " + dung[xpos-1][ypos].getMiddleRow());
+		    		System.out.println(dung[xpos-1][ypos-1].getBottomRow() + " " + dung[xpos-1][ypos].getBottomRow());
+		    		System.out.println(dung[xpos][ypos-1].getTopRow() + " " + room.getTopRow());
+		    		System.out.println(dung[xpos][ypos-1].getMiddleRow() + " " + room.getMiddleRow());
+		    		System.out.println(dung[xpos][ypos-1].getBottomRow() + " " + room.getBottomRow());
+		    	}
+		    	
+		    }
 	
 }

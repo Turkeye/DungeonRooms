@@ -17,9 +17,9 @@ public class Room {
 		this.ypos = ypos;
 		
 		if(this.entrance == false && this.exit == false) {
-			int rand1 = (int)Math.random() * 100;
-			int rand2 = (int)Math.random() * 100;
-			int rand3 = (int)Math.random() * 100;
+			int rand1 = (int)Math.ceil(Math.random() * 100);
+			int rand2 = (int)Math.ceil(Math.random() * 100);
+			int rand3 = (int)Math.ceil(Math.random() * 100);
 			if(rand1 <= 10)
 				this.pit = 1;
 			else if(rand2 <= 10)
@@ -88,7 +88,7 @@ public class Room {
 		else {
 			res += "E ";
 		}
-		if(this.ypos == 0 || this.ypos == 4)
+		if(this.ypos == 4)
 			res += "*";
 		else {
 			res += "|";
@@ -101,7 +101,56 @@ public class Room {
 		}
 		return res;
 	}
-
+	public String getTopRow() {
+		String res;
+		if(this.xpos == 0)
+			res = "* * *";
+		else {
+			res = "* - *";
+		}
+		return res;
+	}
+	public String getMiddleRow() {
+		String res; 
+		if(this.ypos == 0)
+			res = "* " + getMiddleItem() + " |";
+		else if(this.ypos == 4)
+			res = "| " + getMiddleItem() + " *";
+		else {
+			res = "| " + getMiddleItem() + " |";
+		}
+		return res;
+	}
+	
+	public String getBottomRow() {
+		String res;
+		if(this.xpos == 4)
+			res = "* * *";
+		else {
+			res = "* - *";
+		}
+		return res;
+	}
+	
+	public String getMiddleItem() {
+		String res = "";
+		if(this.healthpot == 1) 
+			res += "H";
+		else if(this.visionpot == 1)
+			res += "V";
+		else if(this.pit == 1)
+			res += "P"; 
+		else if(this.exit == true)
+			res += "O";
+		else if(this.entrance == true)
+			res += "I";
+		else if(this.monster == 1)
+			res += "X";
+		else {
+			res += "E";
+		}
+		return res;
+	}
 	public int getHealthpot() {
 		return healthpot;
 	}
