@@ -57,7 +57,7 @@ public class Dungeon
     	Room[][] dungeon = new Room[5][5];
     	for(int i = 0; i < dungeon.length; i++) {
     		for(int j = 0; j < dungeon[i].length; j++) {
-    			dungeon[i][j] = new Room(j, i);
+    			dungeon[i][j] = new Room(i, j);
     		}
     	}
     	dungeon[0][0].setEntrance();
