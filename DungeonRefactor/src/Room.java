@@ -26,7 +26,7 @@ public class Room {
 				this.healthpot = 1;
 			else if(rand3 <= 10)
 				this.visionpot = 1;
-			else if(rand3 >= 90)
+			else 
 				this.monster = 1;
 		}
 	}
