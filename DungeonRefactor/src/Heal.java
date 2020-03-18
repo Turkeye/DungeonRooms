@@ -2,7 +2,10 @@
 public class Heal implements Attack{
 	public final int MIN_ADD = 25;
 	public final int MAX_ADD = 50;
-	
+	/*-------------------------------------------------------------------
+	special attack for Sorceress class, heals a random amount of HP between
+	25 and 50.
+	---------------------------------------------------------------------*/
 	@Override
 	public void attack(DungeonCharacter hero, DungeonCharacter opponent) {
 		int hPoints;

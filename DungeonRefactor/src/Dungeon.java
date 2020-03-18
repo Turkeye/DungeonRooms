@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Title: Dungeon.java
  *
@@ -32,111 +34,49 @@
 
 
 
-/*
-  This class is the driver file for the Heroes and Monsters project.  It will
-  do the following:
+/*-------------------------------------------------------------------
+default constructor for dungeon will develop a dungeon with 6 special
+rooms, with the 4 pillars of OO and an entrance and an exit. The
+remainder of the rooms in the 5x5 grid of rooms will have either
+a monster, a vision potion, a healing potion, or a pit.
+There is a 10% chance that a room will have something other than a
+monster, the chances of which are individual from one another.
 
-  1.  Allow the user to choose a hero
-  2.  Randomly select a monster
-  3.  Allow the hero to battle the monster
+Recieves: Player hero object
+Returns: a 5x5 dungeon of rooms
 
-  Once a battle concludes, the user has the option of repeating the above
-
-*/
+Calls room constructors and is called by DungeonAdventure class
+---------------------------------------------------------------------*/
 public class Dungeon
 {
 	
 	private Room[][] dungeon;
-    public static void main(String[] args)
-	{
-
-		Hero theHero;
-		Monster theMonster;
-
-		do
-		{
-		    theHero = chooseHero();
-		    theMonster = generateMonster();
-			battle(theHero, theMonster);
-
-		} while (playAgain());
-
-    }//end main method
+	public ArrayList<String> pillars;
 
     public Dungeon(Hero hero) {
     	Room[][] dungeon = new Room[5][5];
     	dungeon[0][0].setEntrance();
     	dungeon[4][4].setExit();
-    	String[] pillars = {"Abstraction", "Encapsulation", "Inheritance", "Polymorphism"};
-    	dungeon[1][0].setPillar();
-    	dungeon[2][1].setPillar();
-    	dungeon[3][3].setPillar();
-    	dungeon[4][2].setPillar();
+    	for(int i = 0; i < dungeon.length; i++) {
+    		for(int j = 0; j < dungeon[i].length; j++) {
+    			dungeon[i][j] = new Room(j, i);
+    		}
+    	}
+    	pillars.add("Abstraction");
+    	pillars.add("Encapsulation");
+    	pillars.add("Inheritance");
+    	pillars.add("Polymorphism");
+    	dungeon[1][0].setPillar("Abstraction");
+    	dungeon[2][1].setPillar("Encapsulation");
+    	dungeon[3][3].setPillar("Inheritance");
+    	dungeon[4][2].setPillar("Polymorphism");
     	this.dungeon = dungeon;
     }
     
     public Room[][] getDungeon() {
     	return this.dungeon;
     }
-/*-------------------------------------------------------------------
-chooseHero allows the user to select a hero, creates that hero, and
-returns it.  It utilizes a polymorphic reference (Hero) to accomplish
-this task
----------------------------------------------------------------------*/
-	public static Hero chooseHero()
-	{
-		int choice;
 
-		System.out.println("Choose a hero:\n" +
-					       "1. Warrior\n" +
-						   "2. Sorceress\n" +
-						   "3. Thief");
-		choice = Keyboard.readInt();
-		HeroFactory factory = new HeroFactory();
-		return factory.createHero(choice);
-	}//end chooseHero method
-
-/*-------------------------------------------------------------------
-generateMonster randomly selects a Monster and returns it.  It utilizes
-a polymorphic reference (Monster) to accomplish this task.
----------------------------------------------------------------------*/
-	public static Monster generateMonster()
-	{
-		int choice;
-
-		choice = (int)(Math.random() * 3) + 1;
-
-		MonsterFactory factory = new MonsterFactory();
-		return factory.createMonster(choice);
-	}//end generateMonster method
-
-/*-------------------------------------------------------------------
-playAgain allows gets choice from user to play another game.  It returns
-true if the user chooses to continue, false otherwise.
----------------------------------------------------------------------*/
-	public static boolean playAgain()
-	{
-		char again;
-
-		System.out.println("Play again (y/n)?");
-		again = Keyboard.readChar();
-
-		return (again == 'Y' || again == 'y');
-	}//end playAgain method
-
-
-/*-------------------------------------------------------------------
-battle is the actual combat portion of the game.  It requires a Hero
-and a Monster to be passed in.  Battle occurs in rounds.  The Hero
-goes first, then the Monster.  At the conclusion of each round, the
-user has the option of quitting.
----------------------------------------------------------------------*/
-	public static void battle(Hero theHero, Monster theMonster)
-	{
-		Battle battle = new Battle(theHero, theMonster);
-		battle.battle();
-
-	}//end battle method
 
 
 }//end Dungeon class

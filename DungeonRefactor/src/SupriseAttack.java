@@ -1,6 +1,8 @@
 
 public class SupriseAttack implements Attack {
-
+	/*-------------------------------------------------------------------
+	special attack for Theif class.
+	---------------------------------------------------------------------*/
 	@Override
 	public void attack(DungeonCharacter hero, DungeonCharacter opponent) {
 		double surprise = Math.random();

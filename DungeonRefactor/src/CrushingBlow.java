@@ -1,4 +1,6 @@
-
+/*-------------------------------------------------------------------
+special attack class for warrior class
+---------------------------------------------------------------------*/
 public class CrushingBlow implements Attack {
 
 	@Override

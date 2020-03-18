@@ -5,8 +5,6 @@
 /CrushingBlow.class
 /Dungeon.class
 /DungeonCharacter.class
-/DungeonRefactorReportZach_Turk_Caleb_Stanley.docx
-/DungeonRefactorUML.pdf
 /Heal.class
 /Hero.class
 /HeroFactory.class
@@ -15,4 +13,5 @@
 /MonsterFactory.class
 /Room.class
 /SupriseAttack.class
+/DungeonAdcenture.class
 /DungeonAdventure.class

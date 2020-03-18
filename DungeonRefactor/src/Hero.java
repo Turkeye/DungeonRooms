@@ -31,6 +31,7 @@
 public class Hero extends DungeonCharacter
 {
 	private double chanceToBlock;
+	private boolean hasAllPillars = false;
 	private Attack specialAttack;
 	private String specialName;
 	private int numTurns;
@@ -54,7 +55,9 @@ public class Hero extends DungeonCharacter
 	this.numVisionPotions = 0;
 	readName();
   }
-
+  /*-------------------------------------------------------------------
+  generic getters and setters
+  ---------------------------------------------------------------------*/
 public double getChanceToBlock() {
 	return chanceToBlock;
 }
@@ -90,7 +93,11 @@ public void setNumVisionPotions(int numVisionPotions) {
 public String[] getPillars() {
 	return pillars;
 }
-
+/*-------------------------------------------------------------------
+setPillars is a special setter which will fill the Hero's pillar
+array with strings as long as they keep finding more, up to 4
+pillars.
+---------------------------------------------------------------------*/
 public void setPillars(String pillar) {
 	for(int i = 0; i < pillars.length-1; i++){ 
 		if(pillars[i] == null) {
@@ -98,6 +105,15 @@ public void setPillars(String pillar) {
 			break;
 		}
 	}
+	
+}
+
+public boolean getHasAllPillars() {
+	return hasAllPillars;
+}
+
+public void setHasAllPillars(boolean b) {
+	this.hasAllPillars = b;
 }
 
 public Room getPosition() {
@@ -150,7 +166,7 @@ Receives: hit points to subtract
 Returns: nothing
 
 This method calls: defend() or base version of method
-This method is called by: attack() from base class
+This method is called by: attack interface
 ---------------------------------------------------------*/
 public void subtractHitPoints(int hitPoints)
 	{
@@ -167,10 +183,9 @@ public void subtractHitPoints(int hitPoints)
 	}//end method
 
 /*-------------------------------------------------------
-battleChoices will be overridden in derived classes.  It computes the
+battleChoices computes the
 number of turns a hero will get per round based on the opponent that is
-being fought.  The number of turns is reported to the user.  This stuff might
-go better in another method that is invoked from this one...
+being fought.  The number of turns is reported to the user.  
 
 Receives: opponent
 Returns: nothing
@@ -210,7 +225,10 @@ This method is called by: external sources
 		} while(numTurns > 0);
 
 	}//end battleChoices
-	
+	/*-------------------------------------------------------------------
+	returns all information about hero class to be printed during options
+	method in DungeonAdventure class.
+	---------------------------------------------------------------------*/
 	public String toString() {
 		String res = this.getName() + " has " + this.getHitPoints() + " hp, " + this.getNumHealingPotions() + " healing potions, " + this.getNumVisionPotions() + " vision potions, and ";
 		String[] array = this.getPillars();

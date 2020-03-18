@@ -1,4 +1,6 @@
-
+/*-------------------------------------------------------------------
+battle class for battles. Called by DungeonAdventure.
+---------------------------------------------------------------------*/
 public class Battle {
 	Hero theHero;
 	Monster theMonster;

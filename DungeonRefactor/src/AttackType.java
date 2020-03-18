@@ -1,4 +1,7 @@
-
+/*-------------------------------------------------------------------
+default non-special attack class for all mobs and heroes, is a concrete
+flyweight and is called by flyweight factory
+---------------------------------------------------------------------*/
 public class AttackType implements Attack {
 	String attackRattle;
 	

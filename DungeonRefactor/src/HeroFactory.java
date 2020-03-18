@@ -1,4 +1,13 @@
+/*-------------------------------------------------------------------
+Hero factory takes the player's choice and returns the appropriate
+hero constructor.
 
+Recieves: Player choice
+returns: Hero
+
+This method calls hero constructors and is called by the 
+GenerateHero method in the DungeonAdventure class.
+---------------------------------------------------------------------*/
 public class HeroFactory {
 	public Hero createHero(int choice) {
 		
