@@ -26,6 +26,10 @@ public class Room {
 				this.healthpot = 1;
 			else if(rand3 <= 10)
 				this.visionpot = 1;
+			else if(rand3 >= 90) {
+				this.visionpot = 1;
+				this.healthpot = 1;
+			}
 			else 
 				this.monster = 1;
 		}
@@ -85,6 +89,8 @@ public class Room {
 			res += "I ";
 		else if(this.monster == 1)
 			res += "X ";
+		else if(this.healthpot == 1 && this.visionpot == 1)
+			res += "M ";
 		else {
 			res += "E ";
 		}
@@ -146,6 +152,8 @@ public class Room {
 			res += "I";
 		else if(this.monster == 1)
 			res += "X";
+		else if(this.visionpot == 1 && this.healthpot == 1)
+			res += "M";
 		else {
 			res += "E";
 		}
