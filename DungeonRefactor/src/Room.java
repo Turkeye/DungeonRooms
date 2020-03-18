@@ -42,6 +42,7 @@ public class Room {
 		this.healthpot= 0;
 		this.pit = 0;
 		this.monster = 0;
+		this.hasPillar = false;
 	}
 	public void setExit() {
 		this.exit = true;
@@ -49,6 +50,7 @@ public class Room {
 		this.healthpot = 0;
 		this.pit = 0;
 		this.monster = 0;
+		this.hasPillar = false;
 		
 	}
 	public void setPillar(String pillar) {

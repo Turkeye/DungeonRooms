@@ -78,6 +78,41 @@ public class Dungeon
     	return this.dungeon;
     }
 
+    public String toString() {
+    	String res = "The dungeon has 25 rooms, 4 Pillars of OO, Pitfalls, Monsters, Vision potions, and health potions.";
+    	return res;
+    }
 
-
+    public void useVisionPotion(Room[][] dung, Room room) {
+    	int xpos = room.getXpos();
+    	int ypos = room.getYpos();
+    	if(xpos == 0 && ypos > 0 && ypos < 4) {
+    		System.out.println(dung[xpos][ypos-1].toString() + " " + room.toString() + " " + dung[xpos][ypos+1].toString());
+    		System.out.println(dung[xpos+1][ypos-1].toString() + " " + dung[xpos+1][ypos].toString() + " " + dung[xpos+1][ypos+1].toString());
+    	}
+    	else if(xpos == 0 && ypos == 4) {
+    		System.out.println(dung[xpos][ypos-1].toString() + " " + room.toString());
+    		System.out.println(dung[xpos+1][ypos-1].toString() + " " + dung[xpos+1][ypos].toString());
+    	}
+    	else if(xpos > 0 && ypos == 0 && xpos < 4) {
+    		System.out.println(dung[xpos-1][ypos].toString() + " " + dung[xpos-1][ypos+1].toString());
+    		System.out.println(room.toString() + " " + dung[xpos][ypos+1].toString());
+    		System.out.println(dung[xpos+1][ypos].toString() + " " + dung[xpos+1][ypos+1].toString());
+    	}
+    	else if(xpos > 0 && ypos > 0 && ypos < 4) {
+    		System.out.println(dung[xpos-1][ypos-1].toString() + " " +dung[xpos-1][ypos].toString() + " " + dung[xpos-1][ypos+1].toString());
+    		System.out.println(dung[xpos][ypos-1].toString() + " " + room.toString() + " " + dung[xpos][ypos+1].toString());
+    		System.out.println(dung[xpos+1][ypos-1].toString() + " " + dung[xpos+1][ypos].toString() + " " + dung[xpos+1][ypos+1].toString());
+    	}
+    	else if(xpos > 0 && ypos == 4) {
+    		System.out.println(dung[xpos-1][ypos-1].toString() + " " + dung[xpos-1][ypos].toString());
+    		System.out.println(dung[xpos][ypos-1].toString() + " " + room.toString());
+    		System.out.println(dung[xpos+1][ypos-1].toString() + " " + dung[xpos+1][ypos].toString());
+    	}
+    	else if(xpos == 4 && ypos == 4) {
+    		System.out.println(dung[xpos-1][ypos-1].toString() + " " + dung[xpos-1][ypos].toString());
+    		System.out.println(dung[xpos][ypos-1].toString() + " " + room.toString());
+    	}
+    	
+    }
 }//end Dungeon class
