@@ -38,9 +38,18 @@ public class Room {
 	}
 	public void setEntrance() {
 		this.entrance = true;
+		this.visionpot = 0;
+		this.healthpot= 0;
+		this.pit = 0;
+		this.monster = 0;
 	}
 	public void setExit() {
 		this.exit = true;
+		this.visionpot = 0;
+		this.healthpot = 0;
+		this.pit = 0;
+		this.monster = 0;
+		
 	}
 	public void setPillar(String pillar) {
 		this.hasPillar = true;
