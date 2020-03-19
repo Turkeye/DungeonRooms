@@ -10,7 +10,10 @@ public class Battle {
 		this.theMonster = monster;
 	}
 
-	public void battle() {
+	public boolean battle() {
+		if(theHero.getName().equals("Alchemist")) {
+			((DisasterPotion)theHero.getSpecialAttack()).used = false;
+		}
 		char pause = 'p';
 		System.out.println(theHero.getName() + " battles " +
 							theMonster.getName());
@@ -32,12 +35,17 @@ public class Battle {
 
 		}//end battle loop
 
-		if (!theMonster.isAlive())
+		if (!theMonster.isAlive()){
 		    System.out.println(theHero.getName() + " was victorious!");
-		else if (!theHero.isAlive())
+			return true;
+		}
+		else if (!theHero.isAlive()) {
 			System.out.println(theHero.getName() + " was defeated :-(");
+			return false;
+		}
 		else//both are alive so user quit the game
-			System.out.println("Quitters never win ;-)");		
+			System.out.println("Quitters never win ;-)");
+			return false;
 	}
 	
 }

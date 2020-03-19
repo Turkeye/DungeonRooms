@@ -57,7 +57,7 @@ public class Dungeon
     	Room[][] dungeon = new Room[5][5];
     	for(int i = 0; i < dungeon.length; i++) {
     		for(int j = 0; j < dungeon[i].length; j++) {
-    			dungeon[i][j] = new Room(i, j);
+    			dungeon[i][j] = new Room(j, i);
     		}
     	}
     	dungeon[0][0].setEntrance();
@@ -71,6 +71,12 @@ public class Dungeon
     	dungeon[2][1].setPillar("Encapsulation");
     	dungeon[3][3].setPillar("Inheritance");
     	dungeon[4][2].setPillar("Polymorphism");
+    	/*for(int i = 0; i < dungeon.length; i++) {
+    		for(int j = 0; j < dungeon[i].length; j++) {
+    			System.out.println("x: " + dungeon[i][j].getXpos() + " y: " + dungeon[i][j].getYpos());
+    			System.out.println(dungeon[i][j].toString());
+    		}
+    	}*/
     	this.dungeon = dungeon;
     }
     

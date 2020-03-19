@@ -14,6 +14,14 @@ public class MonsterFactory {
 			return new Monster("Gnarltooth the Gremlin", 70, 5, .8, .4, 15, 30, 20, 40, " jabs his kris at ");
 		}
 		
+		else if(choice == 4) {
+			return new Monster("Squishy the Slime", 80, 1, .9, .2, 10, 20, 20, 40, " body-slams into ");
+		}
+		
+		else if(choice == 5){
+			return new Monster("Stinger the Giant Spider", 150, 4, .8, .4, 25, 60, 40, 55, " jabs his stinger at ");
+		}
+		
 		else {
 			System.out.println("Invalid type");
 			return null;

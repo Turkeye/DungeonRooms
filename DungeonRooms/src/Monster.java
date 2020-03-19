@@ -28,6 +28,14 @@ public class Monster extends DungeonCharacter
 
   }//end monster construcotr
 
+public double getChanceToHeal() {
+	return chanceToHeal;
+}
+
+public void setChanceToHeal(double chanceToHeal) {
+	this.chanceToHeal = chanceToHeal;
+}
+
 //-----------------------------------------------------------------
   public void heal()
   {

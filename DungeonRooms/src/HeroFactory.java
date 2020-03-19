@@ -23,6 +23,12 @@ public class HeroFactory {
 			return new Hero("Thief", 75, 6, .8, 20, 40, .5, " swipes his knife at ", "Suprise Attack ", new SupriseAttack());
 		}
 		
+		else if(choice == 4) {
+			return new Hero("Archer", 100, 6, .9, 25, 40, .4, " looses an arrow at ", "Triple Shot ", new TripleShot());
+		}
+		else if(choice == 5) {
+			return new Hero("Alchemist", 90, 5, .8, 20, 50, .3, " throws a poisoned potion at ", "Potion of Disaster ", new DisasterPotion());
+		}
 		else {
 			System.out.println("Invalid type");
 			return null;

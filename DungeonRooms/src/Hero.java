@@ -31,7 +31,7 @@
 public class Hero extends DungeonCharacter
 {
 	private double chanceToBlock;
-	private boolean hasAllPillars = false;
+	private boolean hasAllPillars;
 	private Attack specialAttack;
 	private String specialName;
 	private int numTurns;
@@ -53,6 +53,7 @@ public class Hero extends DungeonCharacter
 	this.specialName = specialName;
 	this.numHealingPotions = 0;
 	this.numVisionPotions = 0;
+	this.hasAllPillars = false;
 	readName();
   }
   /*-------------------------------------------------------------------
@@ -99,7 +100,7 @@ array with strings as long as they keep finding more, up to 4
 pillars.
 ---------------------------------------------------------------------*/
 public void setPillars(String pillar) {
-	for(int i = 0; i < pillars.length-1; i++){ 
+	for(int i = 0; i < pillars.length; i++){ 
 		if(pillars[i] == null) {
 			pillars[i] = pillar;
 			break;
@@ -214,7 +215,13 @@ This method is called by: external sources
 			if(choice == 2) {
 				this.specialAttack.attack(this, opponent);
 				
-			} else if(choice < 1 || choice > 2){
+			} 
+			/*else if(choice == 3) {
+				opponent.subtractHitPoints(500);
+				System.out.println();
+			}*/
+			//tester method
+			else if(choice < 1 || choice > 2){
 				System.out.println("invalid choice!");
 		    }
 
@@ -222,7 +229,7 @@ This method is called by: external sources
 			if (numTurns > 0)
 			    System.out.println("Number of turns remaining is: " + numTurns);
 
-		} while(numTurns > 0);
+		} while(numTurns > 0 && opponent.isAlive());
 
 	}//end battleChoices
 	/*-------------------------------------------------------------------

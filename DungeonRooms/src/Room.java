@@ -65,13 +65,13 @@ public class Room {
 		return pillar;
 	}
 	public String toString() {
-		String res = "";
-		if(this.xpos == 0)
+		String res = xpos + ", " + ypos + "\n";
+		if(this.ypos == 0)
 			res += "* * *\n";
 		else { 
 			res += "* - *\n";
 		}
-		if(this.ypos == 0) {
+		if(this.xpos == 0) {
 			res += "* ";
 		}
 		else {
@@ -94,13 +94,13 @@ public class Room {
 		else {
 			res += "E ";
 		}
-		if(this.ypos == 4)
+		if(this.xpos == 4)
 			res += "*";
 		else {
 			res += "|";
 		}
 		res += "\n* ";
-		if(this.xpos == 4)
+		if(this.ypos == 4)
 			res += "* *";
 		else {
 			res += "- *";
@@ -109,7 +109,7 @@ public class Room {
 	}
 	public String getTopRow() {
 		String res;
-		if(this.xpos == 0)
+		if(this.ypos == 0)
 			res = "* * *";
 		else {
 			res = "* - *";
@@ -118,9 +118,9 @@ public class Room {
 	}
 	public String getMiddleRow() {
 		String res; 
-		if(this.ypos == 0)
+		if(this.xpos == 0)
 			res = "* " + getMiddleItem() + " |";
-		else if(this.ypos == 4)
+		else if(this.xpos == 4)
 			res = "| " + getMiddleItem() + " *";
 		else {
 			res = "| " + getMiddleItem() + " |";
@@ -130,7 +130,7 @@ public class Room {
 	
 	public String getBottomRow() {
 		String res;
-		if(this.xpos == 4)
+		if(this.ypos == 4)
 			res = "* * *";
 		else {
 			res = "* - *";
@@ -200,5 +200,11 @@ public class Room {
 	}
 	public void setHasPillar(boolean hasPillar) {
 		this.hasPillar = hasPillar;
+	}
+	public void setEmpty() {
+		this.healthpot = 0;
+		this.monster = 0;
+		this.visionpot = 0;
+		this.hasPillar = false;
 	}
 }
